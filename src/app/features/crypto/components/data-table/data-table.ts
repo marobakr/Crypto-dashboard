@@ -37,7 +37,7 @@ export class DataTable {
   }
 
   updateLivePrices() {
-    timer(0, 4000)
+    timer(0, 10000) // Increased interval to avoid hitting API rate limits
       .pipe(
         switchMap(() => this.cryptoApi.getTopCryptos(true)),
         takeUntil(this.destroy$)
