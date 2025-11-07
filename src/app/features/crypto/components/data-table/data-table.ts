@@ -1,7 +1,7 @@
 import { CurrencyPipe, PercentPipe } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { switchMap, timer } from 'rxjs';
+import { Subject, switchMap, takeUntil, timer } from 'rxjs';
 import { ICoinsData } from '../../model/crypto-model';
 import { SearchPipe } from '../../pipes/search-pipe';
 import { CryptoApi } from '../../services/crypto-api';
@@ -26,6 +26,8 @@ export class DataTable {
 
   prices: number[] = [];
 
+  private destroy$ = new Subject<void>();
+
   getPriceChangePercentageColor(priceChangePercentage: number): string {
     return priceChangePercentage >= 0 ? '#00E396' : '#FF4560';
   }
@@ -36,7 +38,10 @@ export class DataTable {
 
   updateLivePrices() {
     timer(0, 4000)
-      .pipe(switchMap(() => this.cryptoApi.getTopCryptos(true)))
+      .pipe(
+        switchMap(() => this.cryptoApi.getTopCryptos(true)),
+        takeUntil(this.destroy$)
+      )
       .subscribe((data: ICoinsData[]) => {
         data.forEach((crypto) => {
           if (!this.livePricesMap[crypto.id]) {
@@ -57,5 +62,10 @@ export class DataTable {
 
   removeCrypto(cryptoId: string): void {
     this.cryptoRemoved.emit(cryptoId);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
