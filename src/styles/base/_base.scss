@@ -1,0 +1,27 @@
+label {
+  display: block;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  color: #111827;
+
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+.sr-only {
+  display: none;
+}

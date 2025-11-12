@@ -1,14 +1,14 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  // const p_ID = inject(PLATFORM_ID);
-  // const router = inject(Router);
-  // if (isPlatformBrowser(p_ID)) {
-  //   if (localStorage.getItem('token')) {
-  //     return true;
-  //   } else {
-  //     return router.createUrlTree('/login');
-  //   }
-  // }
-  return true;
+  const cookieService = inject(CookieService);
+  const router = inject(Router);
+  try {
+    JSON.parse(cookieService.get('token'))?.token;
+    return true;
+  } catch (error) {
+    return router.createUrlTree(['/login']);
+  }
 };

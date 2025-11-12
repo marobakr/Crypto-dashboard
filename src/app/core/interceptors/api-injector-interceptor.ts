@@ -3,7 +3,7 @@ import { API_CONFIG } from '@core/config/api.config';
 
 export const apiInjectorInterceptor: HttpInterceptorFn = (req, next) => {
   // Skip interceptor if URL already includes the base URL
-  if (req.url.includes(API_CONFIG.CRYPTO_BASE_URL)) {
+  if (req.url.includes(API_CONFIG.CRYPTO_BASE_URL) || req.url.includes('apirequest')) {
     return next(req);
   }
   const modifiedReq = req.clone({

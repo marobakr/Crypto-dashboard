@@ -1,0 +1,12 @@
+.form {
+  max-width: 25rem;
+  padding : {
+    bottom: 30px;
+    top: 30px;
+  }
+  margin-inline: auto;
+
+  &_search {
+    margin-bottom: 30px;
+  }
+}

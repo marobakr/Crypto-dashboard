@@ -3,6 +3,6 @@ export const API_CONFIG = {
   CRYPTO_BASE_URL: 'https://api.coingecko.com/api/v3/',
   COINS: 'coins/markets',
 
-  AUTH_BASE_URL: 'https://api.escuelajs.co/api/v1/',
-  LOGIN: 'user',
+  AUTH_BASE_URL: 'https://www.apirequest.in/user/api',
+  AUTH: 'login',
 };
