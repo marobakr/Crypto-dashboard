@@ -1,0 +1,26 @@
+@mixin button-base {
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  background-color: $blue;
+  color: $text-light;
+  outline: none;
+  border: none;
+
+  &:hover {
+    background-color: $blue-dark;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+@mixin flex($direction: row, $justify: center, $align: center, $wrap: wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
