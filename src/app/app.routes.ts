@@ -2,19 +2,19 @@ import { Routes } from '@angular/router';
 import { Notfound } from './core/components/notfound/notfound';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'crypto', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   // auth layouts
 
-  // {
-  //   path: '',
-  //   loadComponent: () => import('@layouts/auth-layout/auth-layout').then((c) => c.AuthLayout),
-  //   children: [
-  //     {
-  //       path: 'login',
-  //       loadComponent: () => import('@features/auth/login/login').then((c) => c.Login),
-  //     },
-  //   ],
-  // },
+  {
+    path: '',
+    loadComponent: () => import('@layouts/auth-layout/auth-layout').then((c) => c.AuthLayout),
+    children: [
+      {
+        path: 'login',
+        loadComponent: () => import('@features/auth/login/login').then((c) => c.Login),
+      },
+    ],
+  },
 
   // main layouts
   {
