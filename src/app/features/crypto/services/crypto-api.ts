@@ -2,7 +2,7 @@ import { API_CONFIG } from '@/core/config/api.config';
 import { Injectable } from '@angular/core';
 import { ApiMethods } from '@core/services/api-methods';
 import { Observable } from 'rxjs';
-import { ICoinsData } from '../model/crypto-model';
+import { ICoinsData } from '../interface/crypto-model';
 
 @Injectable({
   providedIn: 'root',

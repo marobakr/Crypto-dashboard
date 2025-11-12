@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ICoinsData } from '../model/crypto-model';
+import { ICoinsData } from '../interface/crypto-model';
 
 @Pipe({
   name: 'search',

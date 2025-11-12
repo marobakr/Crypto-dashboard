@@ -1,5 +1,5 @@
+import { ICoinsData } from '@/features/crypto/interface/crypto-model';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ICoinsData } from '@features/crypto/model/crypto-model';
 import { CryptoApi } from '@features/crypto/services/crypto-api';
 import { Subscription } from 'rxjs';
 import { DataTable } from '../../components/data-table/data-table';
@@ -9,7 +9,7 @@ import { SkeletonTable } from '../../components/skeleton-table/skeleton-table';
   selector: 'app-crypto-dashboard',
   imports: [DataTable, InputSearch, SkeletonTable],
   templateUrl: './crypto-dashboard.html',
-  styleUrl: './crypto-dashboard.css',
+  styleUrl: './crypto-dashboard.scss',
 })
 export class CryptoDashboard implements OnInit, OnDestroy {
   cryptoApi = inject(CryptoApi);
