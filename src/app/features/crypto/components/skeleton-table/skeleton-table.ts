@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-skeleton-table',
   imports: [],
   templateUrl: './skeleton-table.html',
-  styleUrl: './skeleton-table.css',
+  styleUrl: './skeleton-table.scss',
 })
 export class SkeletonTable {}

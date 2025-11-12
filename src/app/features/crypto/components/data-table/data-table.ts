@@ -2,7 +2,7 @@ import { CurrencyPipe, PercentPipe } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Subject, switchMap, takeUntil, timer } from 'rxjs';
-import { ICoinsData } from '../../model/crypto-model';
+import { ICoinsData } from '../../interface/crypto-model';
 import { SearchPipe } from '../../pipes/search-pipe';
 import { CryptoApi } from '../../services/crypto-api';
 import { Chart } from '../chart/chart';
@@ -11,7 +11,7 @@ import { Chart } from '../chart/chart';
   selector: 'app-data-table',
   imports: [NgApexchartsModule, PercentPipe, SearchPipe, CurrencyPipe, Chart],
   templateUrl: './data-table.html',
-  styleUrl: './data-table.css',
+  styleUrl: './data-table.scss',
 })
 export class DataTable {
   @Input({ required: true }) cryptoData: ICoinsData[] = [];

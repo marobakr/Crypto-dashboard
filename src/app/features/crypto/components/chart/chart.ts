@@ -5,7 +5,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
   selector: 'app-chart',
   imports: [NgApexchartsModule],
   templateUrl: './chart.html',
-  styleUrl: './chart.css',
+  styleUrl: './chart.scss',
 })
 export class Chart {
   @Input({ required: true }) series!: ApexAxisChartSeries;

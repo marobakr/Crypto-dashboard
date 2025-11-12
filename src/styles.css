@@ -1,7 +1,0 @@
-@import 'tailwindcss';
-@theme {
-  --color-primary: #adadad5e;
-}
-@utility container {
-  margin-inline: auto;
-}
