@@ -1,6 +1,7 @@
 <section class="h-screen py-15">
-  <div class="container">
+  <div>
     @if(!isLoading) {
+
     <app-input-search (searchValueChange)="searchValue = $event" />
     <app-data-table
       [cryptoData]="cryptoData"

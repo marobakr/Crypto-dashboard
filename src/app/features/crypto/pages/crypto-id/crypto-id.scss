@@ -1,0 +1,162 @@
+@import 'variables';
+@import 'mixins';
+
+%border-line {
+  border-bottom: 3px solid #000;
+  padding-bottom: 8px;
+}
+
+%main-style-heading {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-weight: 600;
+  display: inline-block;
+  @extend %border-line;
+}
+.crypto_details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  &_basic-info {
+    background: white;
+    color: black;
+    padding: 30px;
+    box-shadow: $shadow-primary;
+    border-radius: 16px;
+    grid-column: 1 / -1;
+
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-transform: capitalize;
+
+      &::before {
+        content: '•';
+        font-size: 15px;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &_description {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: $shadow-primary;
+    grid-column: 1 / -1;
+
+    h2 {
+      @extend %main-style-heading;
+    }
+
+    p {
+      line-height: 1.8;
+      color: #555;
+    }
+  }
+
+  &_links {
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: $shadow-primary;
+    h2 {
+      @extend %main-style-heading;
+    }
+    &-wrapper {
+      span {
+        color: black;
+        font-weight: 500;
+      }
+      p {
+        @include flex($direction: column, $align: start);
+        gap: 10px;
+        a {
+          color: #666;
+          gap: 10px;
+          font-size: 12px;
+          padding: 5px;
+          background-color: $color-primary;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  &_images {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: $shadow-primary;
+    text-align: center;
+
+    h2 {
+      @extend %main-style-heading;
+    }
+
+    img {
+      max-width: 200px;
+      margin-inline: auto;
+    }
+  }
+
+  &_market-data {
+    background: black;
+    padding: 2rem;
+    border-radius: 16px;
+    color: white;
+    box-shadow: $shadow-primary;
+    text-transform: capitalize;
+
+    h2 {
+      @extend %main-style-heading;
+      color: white;
+      border-bottom: 3px solid $color-primary;
+    }
+
+    p {
+      margin: 10px 0;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    gap: 10px;
+
+    &_basic-info {
+      padding: 1.5rem;
+
+      h1 {
+        font-size: 14px;
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+
+    &_description,
+    &_links,
+    &_images,
+    &_market-data {
+      padding: 1.5rem;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

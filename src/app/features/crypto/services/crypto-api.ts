@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiMethods } from '@core/services/api-methods';
 import { Observable } from 'rxjs';
 import { ICoinsData } from '../interface/crypto-model';
+import { ICoin } from '../interface/crypto-model-id';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,10 @@ export class CryptoApi extends ApiMethods {
       skipLoading: skipLoading,
     };
 
-    return this.get<ICoinsData[]>(`${API_CONFIG.COINS}`, queryParams);
+    return this.get<ICoinsData[]>(`${API_CONFIG.COINS}/markets`, queryParams);
+  }
+
+  getCryptoDetails(slug: string): Observable<ICoin> {
+    return this.get<ICoin>(`${API_CONFIG.COINS}/${slug}`);
   }
 }

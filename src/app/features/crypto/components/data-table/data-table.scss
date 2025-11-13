@@ -1,26 +1,26 @@
 @import 'mixins';
+@import 'variables';
 
 .parent-table {
   position: relative;
-  overflow-y: hidden;
+  width: 100%;
   overflow-x: auto;
-  @media (min-width: 992px) {
-    .table {
-      overflow-x: hidden;
-    }
-  }
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
-  width: 100%;
+  min-width: 100%;
+  width: max-content;
+  border-collapse: collapse;
   font-size: 14px;
 
   &_thead {
-    font-size: 14px; // text-xs
+    font-size: 14px;
     text-transform: capitalize;
-    background-color: #ffffff; // bg-white
-    border-top: 1px solid #171717;
-    border-bottom: 1px solid #171717;
+    background-color: #ffffff;
+    border-bottom: 1px solid $color-primary;
+    border-top: 1px solid $color-primary;
     text-transform: capitalize;
     &_row {
       th {
@@ -31,16 +31,17 @@
   }
 
   &_row {
-    border-bottom: 1px solid #171717;
+    border-bottom: 1px solid $color-primary;
+    transition: background 0.4s ease;
+    &:hover {
+      background: #e3e3e3;
+    }
+
     &-img {
       padding: 16px 24px;
       gap: 10px;
-
       @include flex(column);
-    }
-
-    @media (min-width: 768px) {
-      &-img {
+      @media (min-width: 768px) {
         @include flex(row, $justify: start);
       }
     }
@@ -51,23 +52,21 @@
     }
 
     &_chart {
-      padding: {
-        top: 16px;
-        bottom: 16px;
-      }
-      max-width: 150px;
+      max-width: 100px;
     }
 
     &_live {
       padding: {
         top: 16px;
         bottom: 16px;
+        right: 20px;
+        left: 20px;
       }
       max-width: 50px;
     }
 
     &_button {
-      @include flex();
+      @include flex($wrap: nowrap, $justify: start);
       gap: 10px;
       padding: 16px 24px;
 
@@ -90,6 +89,16 @@
       padding : {
         top: 16px;
         bottom: 16px;
+      }
+    }
+
+    // Media Query
+    &_live,
+    &_chart,
+    &_price,
+    &-img {
+      @media (max-width: 768px) {
+        padding: 10px;
       }
     }
   }

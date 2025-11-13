@@ -1,0 +1,108 @@
+@import 'variables';
+
+.crypto-skeleton {
+  animation: pulse 2s infinite;
+
+  .header-placeholder {
+    margin : {
+      bottom: 24px;
+      top: 24px;
+    }
+
+    .title-placeholder {
+      height: 48px;
+      background-color: #e5e7eb;
+      border-radius: 8px;
+      width: 100%;
+    }
+  }
+
+  .table-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    table {
+      min-width: 100%;
+      width: max-content;
+      border-collapse: collapse;
+      font-size: 14px;
+      text-align: left;
+
+      thead {
+        font-size: 12px;
+        text-transform: capitalize;
+        background-color: #fff;
+        border-top: 1px solid $color-primary;
+        border-bottom: 1px solid $color-primary;
+
+        th {
+          padding: 12px 24px;
+        }
+      }
+
+      tbody {
+        tr {
+          background-color: #fff;
+          border-bottom: 1px solid $color-primary;
+
+          td {
+            padding: 12px 24px;
+
+            .flex-cell {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+
+              .avatar-placeholder {
+                width: 40px;
+                height: 40px;
+                background-color: #e5e7eb;
+                border-radius: 50%;
+              }
+
+              .text-placeholder {
+                height: 16px;
+                width: 96px;
+                background-color: #e5e7eb;
+                border-radius: 4px;
+              }
+            }
+
+            .price-placeholder {
+              height: 16px;
+              width: 80px;
+              background-color: #e5e7eb;
+              border-radius: 4px;
+            }
+
+            .change-placeholder {
+              height: 16px;
+              width: 64px;
+              background-color: #e5e7eb;
+              border-radius: 4px;
+            }
+
+            .chart-placeholder {
+              height: 80px;
+              width: 96px;
+              background-color: #e5e7eb;
+              border-radius: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
