@@ -49,7 +49,7 @@
         <td class="table_row_chart">
           <app-chart
             [color]="getPriceChangePercentageColor(crypto.price_change_percentage_24h)"
-            [series]="[{ data: crypto.sparkline_in_7d.price, name: crypto.name }]"
+            [series]="[{ data: crypto.sparkline_in_7d.price, name: crypto.name,},]"
           />
         </td>
         <td *appRole="['admin']" class="table_row_live">

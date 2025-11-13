@@ -28,7 +28,7 @@ export class ThemeService {
     this.renderer.addClass(document.body, newTheme);
 
     this.currentTheme = newTheme;
-    this.cookieService.set('app-theme', newTheme);
+    this.cookieService.set('web-theme', newTheme);
   }
 
   get current(): 'light-theme' | 'dark-theme' {
