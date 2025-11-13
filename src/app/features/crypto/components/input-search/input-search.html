@@ -1,14 +1,12 @@
-<form class="max-w-md mx-auto pb-10" role="search">
-  <label for="default-search" class="mb-2 text-sm font-medium sr-only"
-    >Search for a Cryptocurrency
-  </label>
+<form class="form" role="search">
+  <label for="default-search" class="sr-only">Search for a Cryptocurrency </label>
   <input
     [(ngModel)]="searchValue"
     (input)="onSearchValueChange()"
     type="search"
+    class="form_search"
     name="search"
     id="default-search"
-    class="block w-full p-2 ps-3 text-sm border outline-0 border-primary text-[#786f6ff4] rounded-xl"
     placeholder="Search for a Cryptocurrency..."
     aria-label="Search for a cryptocurrency"
   />

@@ -1,0 +1,100 @@
+@import 'mixins';
+
+.parent-table {
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: auto;
+  @media (min-width: 992px) {
+    .table {
+      overflow-x: hidden;
+    }
+  }
+}
+
+.table {
+  width: 100%;
+  font-size: 14px;
+
+  &_thead {
+    font-size: 14px; // text-xs
+    text-transform: capitalize;
+    background-color: #ffffff; // bg-white
+    border-top: 1px solid #171717;
+    border-bottom: 1px solid #171717;
+    text-transform: capitalize;
+    &_row {
+      th {
+        text-align: start;
+        padding: 16px 24px;
+      }
+    }
+  }
+
+  &_row {
+    border-bottom: 1px solid #171717;
+    &-img {
+      padding: 16px 24px;
+      gap: 10px;
+
+      @include flex(column);
+    }
+
+    @media (min-width: 768px) {
+      &-img {
+        @include flex(row, $justify: start);
+      }
+    }
+
+    &_price {
+      padding: 16px 24px;
+      font-weight: 600;
+    }
+
+    &_chart {
+      padding: {
+        top: 16px;
+        bottom: 16px;
+      }
+      max-width: 150px;
+    }
+
+    &_live {
+      padding: {
+        top: 16px;
+        bottom: 16px;
+      }
+      max-width: 50px;
+    }
+
+    &_button {
+      @include flex();
+      gap: 10px;
+      padding: 16px 24px;
+
+      button,
+      a {
+        cursor: pointer;
+        border: none;
+        padding: 8px;
+        border-radius: 10px;
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+
+    &_empty {
+      text-align: center;
+      text-transform: capitalize;
+      padding : {
+        top: 16px;
+        bottom: 16px;
+      }
+    }
+  }
+}
+
+img {
+  max-width: 50px;
+}

@@ -1,25 +1,22 @@
-<div
-  class="relative overflow-x-auto md:overflow-x-hidden overflow-y-hidden"
-  aria-label="Cryptocurrency data table"
->
-  <table class="w-full text-sm text-left rtl:text-right text-black" role="table">
-    <thead class="text-xs capitalize bg-white border-t border-b border-primary">
-      <tr>
-        <th scope="col" class="px-6 py-3">name</th>
-        <th scope="col" class="px-6 py-3">price</th>
-        <th scope="col" class="px-6 py-3">change</th>
-        <th scope="col" class="px-6 py-3">chart</th>
-        <th scope="col" class="px-6 py-3 flex items-center gap-2">
+<div class="parent-table relative" aria-label="Cryptocurrency data table">
+  <table class="table" role="table">
+    <thead class="table_thead">
+      <tr class="table_thead_row">
+        <th scope="col">name</th>
+        <th scope="col">price</th>
+        <th scope="col">change</th>
+        <th scope="col">chart</th>
+        <th *appRole="['admin']" scope="col" class="table_th px-6 py-3 flex items-center gap-2">
           <span> live </span>
           <span class="text-xs w-2 h-2 rounded-full bg-green-500"></span>
         </th>
-        <th scope="col" class="px-6 py-3">action</th>
+        <th *appRole="['admin']" scope="col" class="px-6 py-3">action</th>
       </tr>
     </thead>
     <tbody>
       @for (crypto of cryptoData | search : searchValue; track crypto.id) {
-      <tr class="border-b border-primary hover:bg-gray-100">
-        <td class="px-6 py-4 flex flex-col md:flex-row items-start md:items-center gap-2">
+      <tr class="table_row">
+        <td class="table_row-img">
           <img [src]="crypto.image" [alt]="crypto.name" class="w-7 md:w-10" loading="lazy" />
           <span
             [title]="crypto.name"
@@ -28,37 +25,46 @@
           >
         </td>
         <td
-          [class]="crypto.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'"
-          class="px-6 py-4 font-semibold"
+          [style.color]="crypto.price_change_percentage_24h >= 0 ? '#00E396' : '#FF4560'"
+          class="table_row_price"
         >
           {{ crypto.current_price | currency }}
         </td>
         <td
-          [class]="crypto.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'"
-          class="px-6 py-4 font-semibold"
+          [style.color]="crypto.price_change_percentage_24h >= 0 ? '#00E396' : '#FF4560'"
+          class="table_row_price"
         >
           {{ crypto.price_change_percentage_24h | percent }}
         </td>
-        <td class="px-6 max-w-[150px]">
+        <td class="table_row_chart">
           <app-chart
             [color]="getPriceChangePercentageColor(crypto.price_change_percentage_24h)"
             [series]="[{ data: crypto.sparkline_in_7d.price, name: crypto.name }]"
           />
         </td>
-        <td class="px-6 max-w-[50px]">
+        <td *appRole="['admin']" class="table_row_live">
           <app-chart
             [color]="getPriceChangePercentageColor(crypto.price_change_percentage_24h)"
             [series]="[{ data: livePricesMap[crypto.id] || [], name: crypto.name }]"
           />
         </td>
-        <td class="px-6 py-4">
-          <button
-            (click)="removeCrypto(crypto.id)"
-            class="text-primary cursor-pointer transition-colors"
-            aria-label="Remove cryptocurrency"
-          >
+        <td *appRole="['admin']" class="table_row_button">
+          <a aria-label="view page details">
             <svg
-              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </a>
+          <button (click)="removeCrypto(crypto.id)" aria-label="Remove cryptocurrency">
+            <svg
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -76,7 +82,7 @@
       </tr>
       } @empty {
       <tr>
-        <td colspan="6" class="text-center py-4 capitalize">No data found</td>
+        <td colspan="6" class="table_row_empty">No data found</td>
       </tr>
       }
     </tbody>

@@ -1,15 +1,26 @@
 <section class="login">
   <h1 class="login_heading">login form</h1>
-  <form class="login_form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login_form">
     <!-- Email -->
-    <div class="login_form_email">
-      <label for="email">Your email</label>
-      <input type="email" id="email" placeholder="name@flowbite.com" />
+    <div class="login_form_name">
+      <label for="name">Your userName</label>
+      <input formControlName="username" type="text" id="name" placeholder="username" />
+      @if (username.touched ) { @if(username.hasError('required')) {
+      <p class="login_form_error">name is required</p>
+      } @if(username.hasError('minlength')) {
+      <p class="login_form_error">username must be at least 3 characters</p>
+      } }
     </div>
     <!-- Password -->
     <div class="login_form_password">
       <label for="password">Your password</label>
-      <input type="password" id="password" placeholder="your password" />
+      <input formControlName="password" type="password" id="password" placeholder="your password" />
+
+      @if (password.touched) { @if(password.hasError('required')) {
+      <p class="login_form_error">password cannot be empty</p>
+      } @if(password.hasError('minlength')) {
+      <p class="login_form_error">password must be at least 3 characters</p>
+      } }
     </div>
 
     <button type="submit">Submit</button>

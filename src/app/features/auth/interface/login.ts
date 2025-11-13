@@ -1,16 +1,4 @@
-export interface ILoginPost {
+export interface ILogin {
   username: string;
-  email: string;
   password: string;
-}
-
-export interface ILoginRes {
-  id: number;
-  email: string;
-  password: string;
-  name: string;
-  role: string;
-  avatar: string;
-  creationAt: string;
-  updatedAt: string;
 }

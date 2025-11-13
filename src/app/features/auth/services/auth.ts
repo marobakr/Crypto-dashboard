@@ -1,6 +1,5 @@
-import { ILoginPost, ILoginRes } from '@/features/auth/interface/login';
-import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../../../core/config/api.config';
 import { ApiMethods } from '../../../core/services/api-methods';
@@ -8,22 +7,19 @@ import { ApiMethods } from '../../../core/services/api-methods';
 @Injectable({
   providedIn: 'root',
 })
-export class Auth extends ApiMethods {
-  private readonly PLATFORM_ID = inject(PLATFORM_ID);
-
-  login(credentions: ILoginPost): Observable<ILoginRes> {
-    return this.post<ILoginRes>(`${API_CONFIG.LOGIN}`, credentions);
+export class AuthService extends ApiMethods {
+  cookieService = inject(CookieService);
+  login(credentions: any): Observable<{ token: string }> {
+    return this.post<{ token: string }>(
+      `${API_CONFIG.AUTH_BASE_URL}/${API_CONFIG.AUTH}`,
+      credentions
+    );
   }
-
-  setUserInof(userData: ILoginRes) {
-    if (isPlatformBrowser(PLATFORM_ID)) {
-      localStorage.setItem('userData', JSON.stringify({ ...userData }));
+  userRole(): string {
+    try {
+      return JSON.parse(this.cookieService.get('token'))?.username;
+    } catch (error) {
+      return 'not-allow';
     }
   }
-
-  // getUser(): ILoginRes | undefined {
-  //   return isPlatformBrowser(PLATFORM_ID)
-  //     ? JSON.parse(localStorage.getItem('userData'))
-  //     : undefined;
-  // }
 }
