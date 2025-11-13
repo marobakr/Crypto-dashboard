@@ -1,0 +1,32 @@
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--button-color, #3b82f6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 999;
+
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--hover-color, #2563eb);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

@@ -1,5 +1,4 @@
 @import 'mixins';
-@import 'variables';
 
 .parent-table {
   position: relative;
@@ -14,13 +13,14 @@
   width: max-content;
   border-collapse: collapse;
   font-size: 14px;
+  color: var(--text-color);
 
   &_thead {
     font-size: 14px;
     text-transform: capitalize;
-    background-color: #ffffff;
-    border-bottom: 1px solid $color-primary;
-    border-top: 1px solid $color-primary;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--bg-color);
+    border-top: 1px solid var(--bg-color);
     text-transform: capitalize;
     &_row {
       th {
@@ -31,10 +31,12 @@
   }
 
   &_row {
-    border-bottom: 1px solid $color-primary;
+    border-bottom: 1px solid var(--bg-color);
+    background: var(--bg-color);
+
     transition: background 0.4s ease;
     &:hover {
-      background: #e3e3e3;
+      background: var(--bg-hover);
     }
 
     &-img {

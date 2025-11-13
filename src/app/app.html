@@ -9,3 +9,17 @@
   [fullScreen]="true"
 >
 </ngx-spinner>
+<!-- app.component.html -->
+<button class="theme-toggle-btn" (click)="toggleTheme()">
+  @if(isDarkMode){
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <path
+      d="M12 3a1 1 0 0 1 1 1v1.25a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 15.75a4.75 4.75 0 1 1 0-9.5 4.75 4.75 0 0 1 0 9.5zM4 11a1 1 0 0 1 0-2h1.25a1 1 0 1 1 0 2H4zm14.75 0a1 1 0 0 1 0-2H20a1 1 0 1 1 0 2h-1.25zM5.636 5.636a1 1 0 0 1 1.414 0l.884.884a1 1 0 1 1-1.414 1.414l-.884-.884a1 1 0 0 1 0-1.414zm10.43 10.43a1 1 0 0 1 1.414 0l.884.884a1 1 0 1 1-1.414 1.414l-.884-.884a1 1 0 0 1 0-1.414zM5.636 18.364a1 1 0 0 1 0-1.414l.884-.884a1 1 0 0 1 1.414 1.414l-.884.884a1 1 0 0 1-1.414 0zm10.43-10.43a1 1 0 0 1 0-1.414l.884-.884a1 1 0 1 1 1.414 1.414l-.884.884a1 1 0 0 1-1.414 0z"
+    />
+  </svg>
+  }@else {<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <path
+      d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0 3a1 1 0 0 1-1-1v-1.25a1 1 0 1 1 2 0V20a1 1 0 0 1-1 1zM4 13a1 1 0 1 1 0-2h1.25a1 1 0 1 1 0 2H4zm14.75 0a1 1 0 1 1 0-2H20a1 1 0 1 1 0 2h-1.25z"
+    /></svg
+  >}
+</button>

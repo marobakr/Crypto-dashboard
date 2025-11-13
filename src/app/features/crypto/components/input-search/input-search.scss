@@ -1,5 +1,6 @@
-@import 'variables';
-
+div {
+  background-color: var(--bg-color);
+}
 .form {
   max-width: 25rem;
   padding : {

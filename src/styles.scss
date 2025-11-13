@@ -2,3 +2,11 @@
 @import 'mixins';
 @import 'base';
 @import 'reset';
+@import 'light';
+@import 'dark';
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  height: auto;
+}

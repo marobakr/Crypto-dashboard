@@ -4,13 +4,13 @@
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
-  background-color: $blue;
-  color: $text-light;
+  background-color: var(--bg-btn);
+  color: white;
   outline: none;
   border: none;
 
   &:hover {
-    background-color: $blue-dark;
+    background-color: #1d4ed8;
   }
 
   &:focus {
