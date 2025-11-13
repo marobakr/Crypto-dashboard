@@ -1,0 +1,8 @@
+@import 'variables';
+.light-theme {
+  --bg-color: #{$color-bg-light};
+  --text-color: #{$color-text-light};
+  --bg-btn: #{$color-button-light};
+  --bg-hover: #{$color-hover-light};
+  --bg-shadow: #{$shadow-light};
+}

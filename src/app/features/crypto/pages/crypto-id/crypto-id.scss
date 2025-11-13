@@ -22,16 +22,19 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   &_basic-info {
-    background: white;
-    color: black;
+    background-color: var(--bg-color);
+    box-shadow: var(--bg-shadow);
+    color: #555;
     padding: 30px;
-    box-shadow: $shadow-primary;
     border-radius: 16px;
     grid-column: 1 / -1;
 
     h1 {
       font-size: 30px;
       font-weight: 700;
+      @extend %main-style-heading;
+      color: var(--text-color);
+      border-bottom-color: var(--text-color);
     }
 
     p {
@@ -44,20 +47,23 @@
       &::before {
         content: '•';
         font-size: 15px;
-        color: $color-primary;
+        color: #555;
       }
     }
   }
 
   &_description {
-    background: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: var(--bg-shadow);
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: $shadow-primary;
     grid-column: 1 / -1;
 
     h2 {
       @extend %main-style-heading;
+      color: var(--text-color);
+      border-bottom-color: var(--text-color);
     }
 
     p {
@@ -69,13 +75,16 @@
   &_links {
     padding: 20px;
     border-radius: 16px;
-    box-shadow: $shadow-primary;
+    background-color: var(--bg-color);
+    box-shadow: var(--bg-shadow);
     h2 {
       @extend %main-style-heading;
+      color: var(--text-color);
+      border-bottom-color: var(--text-color);
     }
     &-wrapper {
       span {
-        color: black;
+        color: var(--text-color);
         font-weight: 500;
       }
       p {
@@ -86,22 +95,24 @@
           gap: 10px;
           font-size: 12px;
           padding: 5px;
-          background-color: $color-primary;
           border-radius: 5px;
+          background-color: var(--bg-color);
         }
       }
     }
   }
 
   &_images {
-    background: #ffffff;
+    background-color: var(--bg-color);
     padding: 16px;
     border-radius: 16px;
-    box-shadow: $shadow-primary;
+    box-shadow: $shadow-light;
     text-align: center;
 
     h2 {
       @extend %main-style-heading;
+      color: var(--text-color);
+      border-bottom-color: var(--text-color);
     }
 
     img {
@@ -111,23 +122,23 @@
   }
 
   &_market-data {
-    background: black;
+    background-color: var(--bg-color);
+    color: #666;
+    box-shadow: var(--bg-shadow);
     padding: 2rem;
     border-radius: 16px;
-    color: white;
-    box-shadow: $shadow-primary;
     text-transform: capitalize;
 
     h2 {
       @extend %main-style-heading;
-      color: white;
-      border-bottom: 3px solid $color-primary;
+      color: var(--text-color);
+      border-bottom-color: var(--text-color);
     }
 
     p {
       margin: 10px 0;
       padding: 8px 20px;
-      background: rgba(255, 255, 255, 0.15);
+      background: #18040424;
       border-radius: 8px;
     }
   }

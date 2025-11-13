@@ -3,7 +3,7 @@
 
 .navbar {
   @include flex($justify: space-between);
-  background-color: $color-primary;
+  background-color: var(--bg-color);
   padding: 10px 20px;
   height: 60px;
   width: 100%;
@@ -24,12 +24,12 @@
 
     img {
       height: 40px;
-      width: auto;
       display: block;
     }
   }
 
   &_logout {
     @include button-base;
+    background: var(--bg-btn);
   }
 }
