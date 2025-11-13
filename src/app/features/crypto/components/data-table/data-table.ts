@@ -1,8 +1,9 @@
 import { Role } from '@/shared/role';
 import { CurrencyPipe, PercentPipe } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { Subject } from 'rxjs';
+import { Subject, switchMap, takeUntil, timer } from 'rxjs';
 import { ICoinsData } from '../../interface/crypto-model';
 import { SearchPipe } from '../../pipes/search-pipe';
 import { CryptoApi } from '../../services/crypto-api';
@@ -10,7 +11,7 @@ import { Chart } from '../chart/chart';
 
 @Component({
   selector: 'app-data-table',
-  imports: [NgApexchartsModule, PercentPipe, SearchPipe, CurrencyPipe, Chart, Role],
+  imports: [NgApexchartsModule, PercentPipe, SearchPipe, CurrencyPipe, Chart, Role, RouterLink],
   templateUrl: './data-table.html',
   styleUrl: './data-table.scss',
 })
@@ -38,25 +39,25 @@ export class DataTable {
   }
 
   updateLivePrices() {
-    // timer(0, 10000) // Increased interval to avoid hitting API rate limits
-    //   .pipe(
-    //     switchMap(() => this.cryptoApi.getTopCryptos(true)),
-    //     takeUntil(this.destroy$)
-    //   )
-    //   .subscribe((data: ICoinsData[]) => {
-    //     data.forEach((crypto) => {
-    //       if (!this.livePricesMap[crypto.id]) {
-    //         const parentCoin = this.cryptoData.find((c) => c.id === crypto.id);
-    //         this.livePricesMap[crypto.id] = parentCoin
-    //           ? [...parentCoin.sparkline_in_7d.price]
-    //           : [crypto.current_price];
-    //       }
-    //       this.livePricesMap[crypto.id].push(crypto.current_price);
-    //       if (this.livePricesMap[crypto.id].length > 50) {
-    //         this.livePricesMap[crypto.id].shift();
-    //       }
-    //     });
-    //   });
+    timer(0, 1000000000) // Increased interval to avoid hitting API rate limits
+      .pipe(
+        switchMap(() => this.cryptoApi.getTopCryptos(true)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((data: ICoinsData[]) => {
+        data.forEach((crypto) => {
+          if (!this.livePricesMap[crypto.id]) {
+            const parentCoin = this.cryptoData.find((c) => c.id === crypto.id);
+            this.livePricesMap[crypto.id] = parentCoin
+              ? [...parentCoin.sparkline_in_7d.price]
+              : [crypto.current_price];
+          }
+          this.livePricesMap[crypto.id].push(crypto.current_price);
+          if (this.livePricesMap[crypto.id].length > 50) {
+            this.livePricesMap[crypto.id].shift();
+          }
+        });
+      });
   }
 
   removeCrypto(cryptoId: string): void {

@@ -19,7 +19,11 @@ export class AuthService extends ApiMethods {
     try {
       return JSON.parse(this.cookieService.get('token'))?.username;
     } catch (error) {
-      return 'not-allow';
+      return 'user';
     }
+  }
+
+  clearCookies(): void {
+    this.cookieService.delete('token');
   }
 }

@@ -1,9 +1,9 @@
-import { CryptoDashboard } from '@/features/crypto/pages/crypto-dashboard/crypto-dashboard';
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [CryptoDashboard],
+  imports: [RouterOutlet],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })

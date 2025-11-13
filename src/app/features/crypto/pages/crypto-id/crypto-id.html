@@ -1,1 +1,110 @@
-<p>crypto-id works!</p>
+@if(isLoading){
+<section>
+  <div class="crypto_details">
+    <div class="crypto_details_basic-info">
+      <h1>{{ coin.name }} ({{ coin.symbol | uppercase }})</h1>
+      <p>market cap rank: {{ coin.market_cap_rank }}</p>
+      <p>block time: {{ coin.block_time_in_minutes }} min</p>
+      <p>hashing algorithm: {{ coin.hashing_algorithm || 'N/A' }}</p>
+      <p>origin country: {{ coin.country_origin || 'N/A' }}</p>
+
+      <p>
+        genesis date: @if( coin.genesis_date){
+        {{ coin.genesis_date | date }}
+        }@else {'N/A'}
+      </p>
+    </div>
+
+    <!-- Description -->
+    <div class="crypto_details_description">
+      <h2>Description</h2>
+      <p [innerHTML]="coin.description.en"></p>
+    </div>
+
+    <!-- Links -->
+    <div class="crypto_details_links">
+      <h2>Links</h2>
+      @if(coin.links.homepage.length){
+
+      <div class="crypto_details_links-wrapper">
+        <span> Homepage:</span>
+        <p>
+          @for (url of coin.links.homepage; track $index) {
+          <a [href]="url" target="_blank">{{ url }}</a>
+          }
+        </p>
+      </div>
+      } @if(coin.links.whitepaper) {
+      <div class="crypto_details_links-wrapper">
+        <span> Whitepaper:</span>
+        <p>
+          <a [href]="coin.links.whitepaper" target="_blank">{{ coin.links.whitepaper }}</a>
+        </p>
+      </div>
+      } @if(coin.links.twitter_screen_name) {
+
+      <div class="crypto_details_links-wrapper">
+        <span> Twitter:</span>
+        <p>
+          <a [href]="'https://twitter.com/' + coin.links.twitter_screen_name" target="_blank">{{
+            coin.links.twitter_screen_name
+          }}</a>
+        </p>
+      </div>
+      } @if(coin.links.telegram_channel_identifier){
+      <div class="crypto_details_links-wrapper">
+        <span> Telegram:</span>
+        <p>
+          <a [href]="'https://t.me/' + coin.links.telegram_channel_identifier" target="_blank">{{
+            coin.links.telegram_channel_identifier
+          }}</a>
+        </p>
+      </div>
+      } @if(coin.links.subreddit_url) {
+
+      <div class="crypto_details_links-wrapper">
+        <span> Reddit:</span>
+        <p>
+          <a [href]="coin.links.subreddit_url" target="_blank">{{ coin.links.subreddit_url }}</a>
+        </p>
+      </div>
+      } @if(coin.links.repos_url.github.length) {
+      <div class="crypto_details_links-wrapper">
+        <span> Github:</span>
+        <p>
+          @for(repo of coin.links.repos_url.github; track $index){
+          <a [href]="repo" target="_blank">{{ repo }}</a>
+          }
+        </p>
+      </div>
+      }
+    </div>
+
+    <!-- Images -->
+    <div class="crypto_details_images">
+      <h2>Images</h2>
+      <img [src]="coin.image.large" [alt]="coin.name" />
+    </div>
+
+    <!-- Market Data -->
+    <div class="crypto_details_market-data">
+      <h2>market data (USD)</h2>
+      <p>current price: {{ coin.market_data.current_price.usd }}</p>
+      <p>market cap: {{ coin.market_data.market_cap.usd }}</p>
+      <p>fully diluted valuation: {{ coin.market_data.fully_diluted_valuation.usd }}</p>
+      <p>
+        24h high / low: {{ coin.market_data.high_24h.usd }} / {{ coin.market_data.low_24h.usd }}
+      </p>
+      <p>
+        price change 24h: {{ coin.market_data.price_change_24h }} ({{
+          coin.market_data.price_change_percentage_24h
+        }}%)
+      </p>
+      <p>circulating supply: {{ coin.market_data.circulating_supply }}</p>
+      <p>total supply: {{ coin.market_data.total_supply }}</p>
+      <p>max supply: {{ coin.market_data.max_supply }}</p>
+    </div>
+  </div>
+</section>
+
+}

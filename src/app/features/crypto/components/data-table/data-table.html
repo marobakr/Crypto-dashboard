@@ -16,7 +16,17 @@
     <tbody>
       @for (crypto of cryptoData | search : searchValue; track crypto.id) {
       <tr class="table_row">
-        <td class="table_row-img">
+        <td *appRole="['admin']" class="table_row-img">
+          <a [routerLink]="[crypto.id]">
+            <img [src]="crypto.image" [alt]="crypto.name" class="w-7 md:w-10" loading="lazy" />
+          </a>
+          <span
+            [title]="crypto.name"
+            class="text-sm font-medium text-center md:text-left line-clamp-1"
+            >{{ crypto.name }}</span
+          >
+        </td>
+        <td *appRole="['user']" class="table_row-img">
           <img [src]="crypto.image" [alt]="crypto.name" class="w-7 md:w-10" loading="lazy" />
           <span
             [title]="crypto.name"
@@ -49,7 +59,7 @@
           />
         </td>
         <td *appRole="['admin']" class="table_row_button">
-          <a aria-label="view page details">
+          <a [routerLink]="[crypto.id]" aria-label="view page details">
             <svg
               viewBox="0 0 24 24"
               fill="none"

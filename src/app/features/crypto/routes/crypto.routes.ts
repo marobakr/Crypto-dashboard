@@ -8,7 +8,7 @@ export default [
   },
 
   {
-    path: 'crypto/:slug',
+    path: ':slug',
     loadComponent: () => import('../pages/crypto-id/crypto-id').then((c) => c.CryptoId),
   },
 ] as Routes;
