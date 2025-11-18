@@ -1,4 +1,4 @@
-@import 'mixins';
+@use 'mixins' as m;
 
 .parent-table {
   position: relative;
@@ -52,9 +52,9 @@
     &-img {
       padding: 16px 24px;
       gap: 10px;
-      @include flex(column);
+      @include m.flex(column);
       @media (min-width: 768px) {
-        @include flex(row, $justify: start);
+        @include m.flex(row, $justify: start);
       }
     }
 
@@ -78,7 +78,7 @@
     }
 
     &_button {
-      @include flex($wrap: nowrap, $justify: start);
+      @include m.flex($wrap: nowrap, $justify: start);
       gap: 10px;
       padding: 16px 24px;
 

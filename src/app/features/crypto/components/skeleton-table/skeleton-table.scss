@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as v;
 
 .crypto-skeleton {
   animation: pulse 2s infinite;
@@ -34,8 +34,8 @@
         font-size: 12px;
         text-transform: capitalize;
         background-color: #fff;
-        border-top: 1px solid $color-bg-light;
-        border-bottom: 1px solid $color-bg-light;
+        border-top: 1px solid v.$color-bg-light;
+        border-bottom: 1px solid v.$color-bg-light;
 
         th {
           padding: 12px 24px;
@@ -45,7 +45,7 @@
       tbody {
         tr {
           background-color: #fff;
-          border-bottom: 1px solid $color-bg-light;
+          border-bottom: 1px solid v.$color-bg-light;
 
           td {
             padding: 12px 24px;
