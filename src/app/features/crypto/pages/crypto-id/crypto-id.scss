@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@use 'variables' as v;
+@use 'mixins' as m;
 
 %border-line {
   border-bottom: 3px solid #000;
@@ -88,7 +88,7 @@
         font-weight: 500;
       }
       p {
-        @include flex($direction: column, $align: start);
+        @include m.flex($direction: column, $align: start);
         gap: 10px;
         a {
           color: #666;
@@ -106,7 +106,7 @@
     background-color: var(--bg-color);
     padding: 16px;
     border-radius: 16px;
-    box-shadow: $shadow-light;
+    box-shadow: v.$shadow-light;
     text-align: center;
 
     h2 {

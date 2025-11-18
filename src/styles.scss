@@ -1,9 +1,7 @@
-@import 'variables';
-@import 'mixins';
-@import 'base';
-@import 'reset';
-@import 'light';
-@import 'dark';
+@use 'base';
+@use 'reset';
+@use 'light';
+@use 'dark';
 
 body {
   background-color: var(--bg-color);

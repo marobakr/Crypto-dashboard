@@ -1,8 +1,8 @@
-@import 'mixins';
+@use 'mixins' as m;
 
 .login {
   height: 100vh;
-  @include flex(column, $wrap: nowrap);
+  @include m.flex(column, $wrap: nowrap);
 
   &_heading {
     text-align: center;
@@ -22,7 +22,7 @@
     &_password {
       width: inherit;
       margin-bottom: 20px;
-      @include flex($justify: space-between);
+      @include m.flex($justify: space-between);
     }
     &_error {
       width: 100%;
@@ -39,7 +39,7 @@
     }
 
     button {
-      @include button-base;
+      @include m.button-base;
       width: 100%;
     }
   }

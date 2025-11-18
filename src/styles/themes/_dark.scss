@@ -1,9 +1,9 @@
-@import 'variables';
+@use 'variables' as v;
 
 .dark-theme {
-  --bg-color: #{$color-bg-dark};
-  --text-color: #{$color-text-dark};
-  --bg-btn: #{$color-button-dark};
-  --bg-hover: #{$color-hover-dark};
-  --bg-shadow: #{$shadow-dark};
+  --bg-color: #{v.$color-bg-dark};
+  --text-color: #{v.$color-text-dark};
+  --bg-btn: #{v.$color-button-dark};
+  --bg-hover: #{v.$color-hover-dark};
+  --bg-shadow: #{v.$shadow-dark};
 }

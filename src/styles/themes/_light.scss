@@ -1,8 +1,8 @@
-@import 'variables';
+@use 'variables' as v;
 .light-theme {
-  --bg-color: #{$color-bg-light};
-  --text-color: #{$color-text-light};
-  --bg-btn: #{$color-button-light};
-  --bg-hover: #{$color-hover-light};
-  --bg-shadow: #{$shadow-light};
+  --bg-color: #{v.$color-bg-light};
+  --text-color: #{v.$color-text-light};
+  --bg-btn: #{v.$color-button-light};
+  --bg-hover: #{v.$color-hover-light};
+  --bg-shadow: #{v.$shadow-light};
 }

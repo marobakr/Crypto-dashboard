@@ -1,8 +1,7 @@
-@import 'variables';
-@import 'mixins';
+@use 'mixins' as m;
 
 .navbar {
-  @include flex($justify: space-between);
+  @include m.flex($justify: space-between);
   background-color: var(--bg-color);
   padding: 10px 20px;
   height: 60px;
@@ -29,7 +28,7 @@
   }
 
   &_logout {
-    @include button-base;
+    @include m.button-base;
     background: var(--bg-btn);
   }
 }
